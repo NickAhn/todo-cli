@@ -11,6 +11,9 @@ import (
 )
 
 // lsCmd represents the ls command
+/*
+By default, ls displays todo list by creation order.
+*/
 var lsCmd = &cobra.Command{
 	Use:   "ls",
 	Short: "List todo list",
@@ -22,8 +25,10 @@ var lsCmd = &cobra.Command{
 		fmt.Println("ls called")
 
 		items, _ := data.ReadItems("./.test.json")
-		fmt.Println("Your todo list:")
-		fmt.Println(items)
+		fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
+		for i, item := range items {
+			fmt.Println("  ", fmt.Sprint(i)+".", item.Text)
+		}
 	},
 }
 
