@@ -10,35 +10,33 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// addCmd represents the add command
-var addCmd = &cobra.Command{
-	Use:   "add",
-	Short: "Add new todo item",
-	Long: `Add creates a new todo item to the list
+// lsCmd represents the ls command
+var lsCmd = &cobra.Command{
+	Use:   "ls",
+	Short: "List todo list",
+	Long: `The list command prints out the todo list.
 	
-	Usage: Add <item-name>`,
+	Usage: todo ls <flags>
+	`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("add called")
+		fmt.Println("ls called")
 
 		items, _ := data.ReadItems("./.test.json")
-		for _, v := range args {
-			items = append(items, data.Item{Text: v})
-		}
-
-		data.SaveItems("./.test.json", items)
+		fmt.Println("Your todo list:")
+		fmt.Println(items)
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(addCmd)
+	rootCmd.AddCommand(lsCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// addCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// lsCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// addCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// lsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
