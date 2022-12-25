@@ -24,6 +24,8 @@ var addCmd = &cobra.Command{
 		for _, v := range args {
 			items = append(items, data.Item{Text: v})
 		}
+
+		data.SaveItems("./.test.json", items)
 	},
 }
 
