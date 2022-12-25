@@ -24,6 +24,19 @@ func SaveItems(path string, items []Item) error {
 	return nil
 }
 
+func ReadItems(path string) ([]Item, error) {
+	b, err := os.ReadFile(path)
+	check(err)
+
+	items := []Item{}
+	if err := json.Unmarshal(b, &items); err != nil {
+		fmt.Println("Error in item.go:ReadItems() - ", err)
+		return []Item{}, err
+	}
+
+	return items, nil
+}
+
 /*
 check verifies if there was an error, throwing a panic if there is one.
 */
