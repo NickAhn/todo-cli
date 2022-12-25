@@ -14,9 +14,7 @@ import (
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Add new todo item",
-	Long: `Add creates a new todo item to the list
-	
-	Usage: Add <item-name>`,
+	Long:  `Add creates a new todo item to the list.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("add called")
 
