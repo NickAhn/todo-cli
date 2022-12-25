@@ -22,8 +22,6 @@ var lsCmd = &cobra.Command{
 	Usage: todo ls <flags>
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("ls called")
-
 		items, _ := data.ReadItems("./.test.json")
 		fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
 		for i, item := range items {

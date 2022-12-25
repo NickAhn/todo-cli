@@ -4,8 +4,6 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/NickAhn/todo/data"
 	"github.com/spf13/cobra"
 )
@@ -16,8 +14,6 @@ var addCmd = &cobra.Command{
 	Short: "Add new todo item",
 	Long:  `Add creates a new todo item to the list.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("add called")
-
 		items, _ := data.ReadItems("./.test.json")
 		for _, v := range args {
 			items = append(items, data.Item{Text: v})

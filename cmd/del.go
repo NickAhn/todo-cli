@@ -4,7 +4,6 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/NickAhn/todo/data"
@@ -17,7 +16,6 @@ var delCmd = &cobra.Command{
 	Short: "Delete a todo item",
 	Long:  `del Deletes a todo item from the list at specified index.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("del called")
 		temp, _ := data.ReadItems("./.test.json")
 		index, _ := strconv.Atoi(args[0])
 		items := append(temp[:index], temp[index+1:]...)
