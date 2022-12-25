@@ -22,7 +22,7 @@ var lsCmd = &cobra.Command{
 	Usage: todo ls <flags>
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
-		items, _ := data.ReadItems("./.test.json")
+		items, _ := data.ReadItems(todo_list_path)
 		fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
 		for i, item := range items {
 			fmt.Println("  ", fmt.Sprint(i)+".", item.Text)
