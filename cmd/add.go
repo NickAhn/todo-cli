@@ -14,12 +14,12 @@ var addCmd = &cobra.Command{
 	Short: "Add new todo item",
 	Long:  `Add creates a new todo item to the list.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		items, _ := data.ReadItems("./.test.json")
+		items, _ := data.ReadItems(todo_list_path)
 		for _, v := range args {
 			items = append(items, data.Item{Text: v})
 		}
 
-		data.SaveItems("./.test.json", items)
+		data.SaveItems(todo_list_path, items)
 	},
 }
 

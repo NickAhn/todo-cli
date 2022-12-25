@@ -16,11 +16,11 @@ var delCmd = &cobra.Command{
 	Short: "Delete a todo item",
 	Long:  `del Deletes a todo item from the list at specified index.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		temp, _ := data.ReadItems("./.test.json")
+		temp, _ := data.ReadItems(todo_list_path)
 		index, _ := strconv.Atoi(args[0])
 		items := append(temp[:index], temp[index+1:]...)
 
-		data.SaveItems("./.test.json", items)
+		data.SaveItems(todo_list_path, items)
 	},
 }
 
