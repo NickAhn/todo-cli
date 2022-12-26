@@ -4,8 +4,6 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/NickAhn/todo/data"
 	"github.com/spf13/cobra"
 )
@@ -16,19 +14,14 @@ var addCmd = &cobra.Command{
 	Short: "Add new todo item",
 	Long:  `Add creates a new todo item to the list.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		priorityFlag, _ := cmd.Flags().GetString("p")
-		if priorityFlag != "" {
-			fmt.Println("flag")
-		} else {
-			items, _ := data.ReadItems(todo_list_path)
-			for _, v := range args {
-				item := data.Item{Text: v}
-				item.SetPriority(priority)
-				items = append(items, item)
-			}
-
-			data.SaveItems(todo_list_path, items)
+		items, _ := data.ReadItems(todo_list_path)
+		for _, v := range args {
+			item := data.Item{Text: v}
+			item.SetPriority(priority)
+			items = append(items, item)
 		}
+
+		data.SaveItems(todo_list_path, items)
 
 	},
 }
