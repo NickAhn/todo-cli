@@ -20,10 +20,8 @@ func (i *Item) SetPriority(priority int) {
 		i.Priority = 2
 	case 3:
 		i.Priority = 3
-	case 4:
-		i.Priority = 4
 	default:
-		i.Priority = 2
+		i.Priority = 4
 	}
 }
 
