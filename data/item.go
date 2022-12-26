@@ -7,7 +7,24 @@ import (
 )
 
 type Item struct {
-	Text string
+	Text     string
+	Priority int
+}
+
+/* Set todo Item's Priority (Default is 2). */
+func (i *Item) SetPriority(priority int) {
+	switch priority {
+	case 1:
+		i.Priority = 1
+	case 2:
+		i.Priority = 2
+	case 3:
+		i.Priority = 3
+	case 4:
+		i.Priority = 4
+	default:
+		i.Priority = 2
+	}
 }
 
 /*
