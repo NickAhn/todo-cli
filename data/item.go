@@ -25,6 +25,10 @@ func (i *Item) SetPriority(priority int) {
 	}
 }
 
+func (i *Item) ToString() string {
+	return i.Text + " p(" + fmt.Sprint(i.Priority) + ")"
+}
+
 /*
 SaveItems saves a list of Items as a json string in a specified path.
 */
