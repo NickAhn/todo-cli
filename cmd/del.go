@@ -19,9 +19,7 @@ var delCmd = &cobra.Command{
 	Long:  `del Deletes a todo item from the list at specified index.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		items, _ := data.ReadItems(todo_list_path) // get saved todo-list
-		fmt.Println("before sorting:", args)
 		sort.Strings(args)
-		fmt.Println("after sorting:", args)
 
 		// deletedItems := make([]data.Item, len(args))
 		for i := 0; i < len(args); i++ {
@@ -32,12 +30,6 @@ var delCmd = &cobra.Command{
 			items = append(items[:index-i], items[index+1-i:]...)
 			fmt.Println("\tItem \"" + delItem.ToString() + "\" has been deleted from todo list")
 		}
-
-		// index, _ := strconv.Atoi(args[0])
-		// deletedItem := temp[index]
-		// items := append(temp[:index], temp[index+1:]...)
-
-		// fmt.Println("\t Item \""+deletedItem.Text+" (p"+fmt.Sprint(deletedItem.Priority)+")\"", "has been deleted from todo list")
 
 		data.SaveItems(todo_list_path, items)
 	},

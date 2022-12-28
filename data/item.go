@@ -57,20 +57,20 @@ SaveItems saves a list of Items as a json string in a specified path.
 */
 func SaveItems(path string, items []Item) error {
 	b, err := json.Marshal(items)
-	check(err)
+	Check(err)
 	err = os.WriteFile(path, b, 0644)
-	check(err)
+	Check(err)
 
 	return nil
 }
 
 func ReadItems(path string) ([]Item, error) {
 	b, err := os.ReadFile(path)
-	check(err)
+	Check(err)
 
 	items := []Item{}
 	err = json.Unmarshal(b, &items)
-	check(err)
+	Check(err)
 
 	return items, nil
 }
@@ -78,7 +78,7 @@ func ReadItems(path string) ([]Item, error) {
 /*
 Error handling function
 */
-func check(e error) {
+func Check(e error) {
 	if e != nil {
 		fmt.Println(Red, e, Reset)
 		os.Exit(1)

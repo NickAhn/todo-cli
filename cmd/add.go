@@ -21,7 +21,7 @@ var addCmd = &cobra.Command{
 			item := data.Item{Text: v}
 			item.SetPriority(priority)
 			items = append(items, item)
-			fmt.Println("\t\"" + v + " (p" + fmt.Sprint(priority) + ")\" has been added to the list")
+			fmt.Println("\t\"" + item.ToString() + "\" has been added to the list")
 		}
 
 		data.SaveItems(todo_list_path, items)

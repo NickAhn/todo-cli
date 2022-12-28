@@ -23,7 +23,6 @@ var editpCmd = &cobra.Command{
 			fmt.Println(err)
 		}
 
-		// get todo item index
 		index, err := strconv.Atoi(args[0])
 
 		// Get user input for new priority

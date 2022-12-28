@@ -25,7 +25,6 @@ var lsCmd = &cobra.Command{
 		items, _ := data.ReadItems(todo_list_path)
 		fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
 		for i, item := range items {
-			// fmt.Println("  ", fmt.Sprint(i)+".", item.Text, "(p"+fmt.Sprint(item.Priority)+")")
 			fmt.Println("   ", fmt.Sprint(i)+".", item.ToString())
 		}
 	},
