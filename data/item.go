@@ -69,8 +69,9 @@ func ReadItems(path string) ([]Item, error) {
 	Check(err)
 
 	items := []Item{}
-	err = json.Unmarshal(b, &items)
-	Check(err)
+	if err = json.Unmarshal(b, &items); err != nil {
+		return []Item{}, nil
+	}
 
 	return items, nil
 }

@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/NickAhn/todo/data"
 	"github.com/spf13/cobra"
@@ -23,6 +24,11 @@ var addCmd = &cobra.Command{
 			items = append(items, item)
 			fmt.Println("\t\"" + item.ToString() + "\" has been added to the list")
 		}
+
+		// sort by Priority
+		sort.Slice(items, func(i, j int) bool {
+			return items[i].Priority < items[j].Priority
+		})
 
 		data.SaveItems(todo_list_path, items)
 	},

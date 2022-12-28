@@ -31,6 +31,10 @@ var delCmd = &cobra.Command{
 			fmt.Println("\tItem \"" + delItem.ToString() + "\" has been deleted from todo list")
 		}
 
+		sort.Slice(items, func(i, j int) bool {
+			return items[i].Priority < items[j].Priority
+		})
+
 		data.SaveItems(todo_list_path, items)
 	},
 }

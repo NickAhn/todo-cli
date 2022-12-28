@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 
 	"github.com/NickAhn/todo/data"
@@ -34,6 +35,10 @@ var editpCmd = &cobra.Command{
 		items[index].SetPriority(newPriority)
 
 		fmt.Println("\tPriority has been set to p" + fmt.Sprint(items[index].Priority))
+
+		sort.Slice(items, func(i, j int) bool {
+			return items[i].Priority < items[j].Priority
+		})
 
 		// Save Changes
 		data.SaveItems(todo_list_path, items)

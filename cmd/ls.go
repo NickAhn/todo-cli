@@ -23,6 +23,7 @@ var lsCmd = &cobra.Command{
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		items, _ := data.ReadItems(todo_list_path)
+
 		fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
 		for i, item := range items {
 			fmt.Println("   ", fmt.Sprint(i)+".", item.ToString())
