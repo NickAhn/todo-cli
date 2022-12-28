@@ -18,21 +18,23 @@ TODO (2):
 Add one or multiple items with different descriptions, priorities, and due dates
 ```
 > todo add "Write a README.md"
-> todo add "Eat" "Sleep" "Repeat"
+> todo add "Sleep" "Repeat" -p2     // priority 2
 ```
 
-Delete items by index (flags can be used for different indexing)
+Delete one or multiple items
 ```
-> todo del 0
+> todo del 0      
+> todo del 3 5 2
 ```
 
 Edit tasks
 ```
-todo edit 1 "Do something else"
+> todo edit 1 "Do something else"
+> todo editp 1 2      // change priority of item 1 to p2
 ```
 
 ## Built With
-* [Go](https://go.dev/) - General Purpose Language. <br> I chose Go because I've been enjoying learning it a lot, and wanted to improve my skills on the language.
-* [Cobra](https://github.com/spf13/cobra) - CLI Command Framework. <br>
+* [Go](https://go.dev/) - main programming language for the CLI <br> I chose Go to improve my skills on the language
+* [Cobra](https://github.com/spf13/cobra) - CLI Command Framework <br>
 I chose to learn this framework because it is used by big projects such as Kubernetes, Docker, Dropbox, etc...
  
