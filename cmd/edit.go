@@ -17,6 +17,7 @@ var editCmd = &cobra.Command{
 	Use:   "edit",
 	Short: "Edit todo list item",
 	Long:  `Edit item in todo list by index`,
+	Args:  cobra.MatchAll(cobra.ExactArgs(2)),
 	Run: func(cmd *cobra.Command, args []string) {
 		items, _ := data.ReadItems(todo_list_path)
 		index, _ := strconv.Atoi(args[0])
