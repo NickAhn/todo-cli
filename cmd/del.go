@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 
 	"github.com/NickAhn/todo/data"
@@ -17,12 +18,26 @@ var delCmd = &cobra.Command{
 	Short: "Delete a todo item",
 	Long:  `del Deletes a todo item from the list at specified index.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		temp, _ := data.ReadItems(todo_list_path)
-		index, _ := strconv.Atoi(args[0])
-		deletedItem := temp[index]
-		items := append(temp[:index], temp[index+1:]...)
+		items, _ := data.ReadItems(todo_list_path) // get saved todo-list
+		fmt.Println("before sorting:", args)
+		sort.Strings(args)
+		fmt.Println("after sorting:", args)
 
-		fmt.Println("\t Item \""+deletedItem.Text+" (p"+fmt.Sprint(deletedItem.Priority)+")\"", "has been deleted from todo list")
+		// deletedItems := make([]data.Item, len(args))
+		for i := 0; i < len(args); i++ {
+			index, _ := strconv.Atoi(args[i])
+			delItem := items[index-i]
+			// deletedItems = append(deletedItems, delItem)
+
+			items = append(items[:index-i], items[index+1-i:]...)
+			fmt.Println("\tItem \"" + delItem.ToString() + "\" has been deleted from todo list")
+		}
+
+		// index, _ := strconv.Atoi(args[0])
+		// deletedItem := temp[index]
+		// items := append(temp[:index], temp[index+1:]...)
+
+		// fmt.Println("\t Item \""+deletedItem.Text+" (p"+fmt.Sprint(deletedItem.Priority)+")\"", "has been deleted from todo list")
 
 		data.SaveItems(todo_list_path, items)
 	},
