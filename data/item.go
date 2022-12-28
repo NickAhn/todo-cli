@@ -69,19 +69,18 @@ func ReadItems(path string) ([]Item, error) {
 	check(err)
 
 	items := []Item{}
-	if err := json.Unmarshal(b, &items); err != nil {
-		fmt.Println("Error in item.go:ReadItems() - ", err)
-		return []Item{}, err
-	}
+	err = json.Unmarshal(b, &items)
+	check(err)
 
 	return items, nil
 }
 
 /*
-check verifies if there was an error, throwing a panic if there is one.
+Error handling function
 */
 func check(e error) {
 	if e != nil {
-		panic(e)
+		fmt.Println(Red, e, Reset)
+		os.Exit(1)
 	}
 }
