@@ -4,6 +4,8 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/NickAhn/todo/data"
 	"github.com/spf13/cobra"
 )
@@ -19,10 +21,10 @@ var addCmd = &cobra.Command{
 			item := data.Item{Text: v}
 			item.SetPriority(priority)
 			items = append(items, item)
+			fmt.Println("\t\"" + v + " (p" + fmt.Sprint(priority) + ")\" has been added to the list")
 		}
 
 		data.SaveItems(todo_list_path, items)
-
 	},
 }
 
