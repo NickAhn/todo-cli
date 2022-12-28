@@ -6,6 +6,16 @@ import (
 	"os"
 )
 
+var Reset = "\033[0m"
+var Red = "\033[31m" // p1
+// var Green = "\033[32m"
+// var Yellow = "\033[33m"
+// var Blue = "\033[34m"
+var Purple = "\033[35m" //p2
+var Cyan = "\033[36m"   //p3
+// var Gray = "\033[37m"
+var White = "\033[97m" //p4
+
 type Item struct {
 	Text     string
 	Priority int
@@ -26,7 +36,20 @@ func (i *Item) SetPriority(priority int) {
 }
 
 func (i *Item) ToString() string {
-	return i.Text + " p(" + fmt.Sprint(i.Priority) + ")"
+	str := i.Text
+	// Add color by Priority
+	switch i.Priority {
+	case 1:
+		str += Red + " p(" + fmt.Sprint(i.Priority) + ")"
+	case 2:
+		str += Purple + " p(" + fmt.Sprint(i.Priority) + ")"
+		// str = Purple + str
+	case 3:
+		str += Cyan + " p(" + fmt.Sprint(i.Priority) + ")"
+	default:
+		str += " p(" + fmt.Sprint(i.Priority) + ")"
+	}
+	return str + Reset
 }
 
 /*
