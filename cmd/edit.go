@@ -4,6 +4,7 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/NickAhn/todo/data"
@@ -20,6 +21,7 @@ var editCmd = &cobra.Command{
 		index, _ := strconv.Atoi(args[0])
 		items[index].Text = args[1]
 		data.SaveItems(todo_list_path, items)
+		fmt.Println("\tItem", index, "has been changed to \"", args[1]+"\"")
 	},
 }
 
