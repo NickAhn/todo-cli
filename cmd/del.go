@@ -4,6 +4,7 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/NickAhn/todo/data"
@@ -18,7 +19,10 @@ var delCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		temp, _ := data.ReadItems(todo_list_path)
 		index, _ := strconv.Atoi(args[0])
+		deletedItem := temp[index]
 		items := append(temp[:index], temp[index+1:]...)
+
+		fmt.Println("\t Item \""+deletedItem.Text+" (p"+fmt.Sprint(deletedItem.Priority)+")\"", "has been deleted from todo list")
 
 		data.SaveItems(todo_list_path, items)
 	},
