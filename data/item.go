@@ -9,7 +9,8 @@ import (
 var Reset = "\033[0m"
 var Red = "\033[31m" // p1
 // var Green = "\033[32m"
-// var Yellow = "\033[33m"
+var Yellow = "\033[33m"
+
 // var Blue = "\033[34m"
 var Purple = "\033[35m" //p2
 var Cyan = "\033[36m"   //p3
@@ -74,6 +75,13 @@ func ReadItems(path string) ([]Item, error) {
 	}
 
 	return items, nil
+}
+
+func PrintTODO(items []Item) {
+	fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
+	for i, item := range items {
+		fmt.Println("   ", fmt.Sprint(i)+".", item.ToString())
+	}
 }
 
 /*

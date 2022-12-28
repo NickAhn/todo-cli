@@ -12,6 +12,7 @@ import (
 )
 
 // editCmd represents the edit command
+// TODO: if args < 2
 var editCmd = &cobra.Command{
 	Use:   "edit",
 	Short: "Edit todo list item",
@@ -20,8 +21,11 @@ var editCmd = &cobra.Command{
 		items, _ := data.ReadItems(todo_list_path)
 		index, _ := strconv.Atoi(args[0])
 		items[index].Text = args[1]
+		fmt.Println("\n\tItem", index, "has been changed to \"", args[1]+"\"\n")
+
+		data.PrintTODO(items)
+
 		data.SaveItems(todo_list_path, items)
-		fmt.Println("\tItem", index, "has been changed to \"", args[1]+"\"")
 	},
 }
 

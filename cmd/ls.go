@@ -4,8 +4,6 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/NickAhn/todo/data"
 	"github.com/spf13/cobra"
 )
@@ -24,10 +22,7 @@ var lsCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		items, _ := data.ReadItems(todo_list_path)
 
-		fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
-		for i, item := range items {
-			fmt.Println("   ", fmt.Sprint(i)+".", item.ToString())
-		}
+		data.PrintTODO(items)
 	},
 }
 

@@ -22,13 +22,15 @@ var addCmd = &cobra.Command{
 			item := data.Item{Text: v}
 			item.SetPriority(priority)
 			items = append(items, item)
-			fmt.Println("\t\"" + item.ToString() + "\" has been added to the list")
+			fmt.Println("\n\t\"" + item.ToString() + "\" has been added to the list\n")
 		}
 
 		// sort by Priority
 		sort.Slice(items, func(i, j int) bool {
 			return items[i].Priority < items[j].Priority
 		})
+
+		data.PrintTODO(items)
 
 		data.SaveItems(todo_list_path, items)
 	},

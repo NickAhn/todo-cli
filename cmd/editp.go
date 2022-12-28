@@ -34,11 +34,13 @@ var editpCmd = &cobra.Command{
 
 		items[index].SetPriority(newPriority)
 
-		fmt.Println("\tPriority has been set to p" + fmt.Sprint(items[index].Priority))
+		fmt.Println("\n\tPriority has been set to p" + fmt.Sprint(items[index].Priority) + "\n")
 
 		sort.Slice(items, func(i, j int) bool {
 			return items[i].Priority < items[j].Priority
 		})
+
+		data.PrintTODO(items)
 
 		// Save Changes
 		data.SaveItems(todo_list_path, items)
