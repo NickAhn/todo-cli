@@ -22,7 +22,7 @@ var editCmd = &cobra.Command{
 		items, _ := data.ReadItems(todo_list_path)
 		index, _ := strconv.Atoi(args[0])
 		items[index].Text = args[1]
-		fmt.Println("\n\tItem", index, "has been changed to \"", args[1]+"\"\n")
+		fmt.Println(data.Yellow, "\n\tItem", index, "has been changed to \""+args[1]+"\"\n", data.Reset)
 
 		data.PrintTODO(items)
 

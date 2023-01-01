@@ -37,20 +37,23 @@ func (i *Item) SetPriority(priority int) {
 }
 
 func (i *Item) ToString() string {
-	str := i.Text
+	str := i.Text + " p(" + fmt.Sprint(i.Priority) + ")"
 	// Add color by Priority
+	return str
+}
+
+func (i *Item) colorPriority() string {
 	switch i.Priority {
 	case 1:
-		str += Red + " p(" + fmt.Sprint(i.Priority) + ")"
+		return Red + "p(" + fmt.Sprint(i.Priority) + ")" + Reset
 	case 2:
-		str += Purple + " p(" + fmt.Sprint(i.Priority) + ")"
+		return Purple + "p(" + fmt.Sprint(i.Priority) + ")" + Reset
 		// str = Purple + str
 	case 3:
-		str += Cyan + " p(" + fmt.Sprint(i.Priority) + ")"
+		return Cyan + "p(" + fmt.Sprint(i.Priority) + ")" + Reset
 	default:
-		str += " p(" + fmt.Sprint(i.Priority) + ")"
+		return "p(" + fmt.Sprint(i.Priority) + ")" + Reset
 	}
-	return str + Reset
 }
 
 /*
@@ -80,8 +83,9 @@ func ReadItems(path string) ([]Item, error) {
 func PrintTODO(items []Item) {
 	fmt.Println("TODO (" + fmt.Sprint(len(items)) + "):")
 	for i, item := range items {
-		fmt.Println("   ", fmt.Sprint(i)+".", item.ToString())
+		fmt.Println("   ", fmt.Sprint(i)+".", item.Text, item.colorPriority())
 	}
+
 }
 
 /*

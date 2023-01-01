@@ -22,7 +22,7 @@ var addCmd = &cobra.Command{
 			item := data.Item{Text: v}
 			item.SetPriority(priority)
 			items = append(items, item)
-			fmt.Println("\n\t\"" + item.ToString() + "\" has been added to the list\n")
+			fmt.Println(data.Yellow, "\n\t\""+item.ToString()+"\" has been added to the list\n", data.Reset)
 		}
 
 		// sort by Priority

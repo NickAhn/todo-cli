@@ -29,7 +29,7 @@ var delCmd = &cobra.Command{
 			// deletedItems = append(deletedItems, delItem)
 
 			items = append(items[:index-i], items[index+1-i:]...)
-			fmt.Println("\tItem \"" + delItem.ToString() + "\" has been deleted from todo list")
+			fmt.Println(data.Yellow, "\tItem \""+delItem.ToString()+"\" has been deleted from todo list", data.Reset)
 		}
 		fmt.Println("")
 

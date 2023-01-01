@@ -34,7 +34,7 @@ var editpCmd = &cobra.Command{
 
 		items[index].SetPriority(newPriority)
 
-		fmt.Println("\n\tPriority has been set to p" + fmt.Sprint(items[index].Priority) + "\n")
+		fmt.Println(data.Yellow, "\n\tPriority has been set to p"+fmt.Sprint(items[index].Priority)+"\n", data.Reset)
 
 		sort.Slice(items, func(i, j int) bool {
 			return items[i].Priority < items[j].Priority
