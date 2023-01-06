@@ -20,6 +20,10 @@ var editCmd = &cobra.Command{
 	Args:  cobra.MatchAll(cobra.ExactArgs(2)),
 	Run: func(cmd *cobra.Command, args []string) {
 		items, _ := data.ReadItems(todo_list_path)
+
+		// Saving unchanged version of todo list to undo.json
+		data.SaveItems(undo_list_path, items)
+
 		index, _ := strconv.Atoi(args[0])
 		items[index].Text = args[1]
 		fmt.Println(data.Yellow, "\n\tItem", index, "has been changed to \""+args[1]+"\"\n", data.Reset)

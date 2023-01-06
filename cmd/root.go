@@ -10,7 +10,8 @@ import (
 )
 
 // Global variable of path to todo-list json file
-var todo_list_path = "./.test.json"
+var todo_list_path = "/home/nickel/Code/go-projects/todo/.todo-list.json"
+var undo_list_path = "/home/nickel/Code/go-projects/todo/.undo-list.json"
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{

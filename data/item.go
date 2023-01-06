@@ -86,6 +86,7 @@ func PrintTODO(items []Item) {
 		fmt.Println("   ", fmt.Sprint(i)+".", item.Text, item.colorPriority())
 	}
 
+	fmt.Println("")
 }
 
 /*

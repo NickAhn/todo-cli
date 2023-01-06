@@ -18,15 +18,18 @@ var editpCmd = &cobra.Command{
 	Short: "Edit priority of todo Item",
 	Long:  `Edit the priority of todo item.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// get item list
-		items, err := data.ReadItems(todo_list_path)
+		items, _ := data.ReadItems(todo_list_path)
+
+		// Saving unchanged version of todo list to undo.json
+		data.SaveItems(undo_list_path, items)
+
+		index, err := strconv.Atoi(args[0])
 		if err != nil {
 			fmt.Println(err)
 		}
 
-		index, err := strconv.Atoi(args[0])
-
 		// Get user input for new priority
+		// TODO: make this block optional
 		fmt.Print("\t- Enter new priority for item \"" + items[index].Text +
 			" (p" + fmt.Sprint(items[index].Priority) + ")\": ")
 		var newPriority int

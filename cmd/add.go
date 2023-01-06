@@ -18,6 +18,10 @@ var addCmd = &cobra.Command{
 	Long:  `Add creates a new todo item to the list.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		items, _ := data.ReadItems(todo_list_path)
+
+		// Saving unchanged version of todo list to undo.json
+		data.SaveItems(undo_list_path, items)
+
 		for _, v := range args {
 			item := data.Item{Text: v}
 			item.SetPriority(priority)
@@ -36,6 +40,7 @@ var addCmd = &cobra.Command{
 	},
 }
 
+// Global variable to store priority value when user passes flag -p in args
 var priority int
 
 func init() {
